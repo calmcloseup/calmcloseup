@@ -553,7 +553,8 @@
   }
 
   /* ---------- Contact ---------- */
-  .contact{ padding-bottom:140px; text-align:center; position:relative; }
+  .contact-credit-wrap{ position:relative; }
+  .contact{ padding-bottom:140px; text-align:center; }
   .contact-title, .contact-list{ position:relative; z-index:2; }
   .eye-rain{
     position:absolute;
@@ -642,6 +643,8 @@
     color:var(--muted);
   }
   .designer-credit{
+    position:relative;
+    z-index:2;
     text-align:center;
     padding:60px 24px 90px;
     overflow:hidden;
@@ -691,6 +694,10 @@
     .scroll-cue{ position:static; transform:none; margin:50px auto 0; }
     .hero-desktop-only{ display:none; }
     .hero-mobile-only{ display:block; }
+    .designer-name-en{
+      white-space:nowrap;
+      font-size:clamp(28px, 9.5vw, 56px);
+    }
     .work-grid{
       perspective:none;
       overflow-x:auto;
@@ -1006,30 +1013,32 @@
   <p class="work-note reveal">* 위 카드는 임시 자리 표시자입니다. 실제 작업 이미지를 <code>.work-card</code> 안에 <code>&lt;img&gt;</code>로 교체하면 됩니다.</p>
 </section>
 
-<section class="contact" id="contact">
+<div class="contact-credit-wrap">
   <div class="eye-rain" aria-hidden="true"></div>
-  <div class="section-head about-head reveal">
-    <h2 class="section-title eng cap">Contact</h2>
-    <div class="section-line"></div>
-  </div>
-  <h3 class="contact-title reveal">Let's take<br>a closer look, together.</h3>
-  <div class="contact-list reveal">
-    <a class="contact-row" href="mailto:pphj9730@gmail.com">
-      <span class="label eng">Email</span>
-      <span class="value">pphj9730@gmail.com</span>
-      <span class="arrow eng">&#8594;</span>
-    </a>
-    <a class="contact-row" href="https://instagram.com/calmcloseup.studio" target="_blank" rel="noopener">
-      <span class="label eng">Instagram</span>
-      <span class="value">@calmcloseup.studio</span>
-      <span class="arrow eng">&#8594;</span>
-    </a>
-  </div>
-</section>
+  <section class="contact" id="contact">
+    <div class="section-head about-head reveal">
+      <h2 class="section-title eng cap">Contact</h2>
+      <div class="section-line"></div>
+    </div>
+    <h3 class="contact-title reveal">Let's take<br>a closer look, together.</h3>
+    <div class="contact-list reveal">
+      <a class="contact-row" href="mailto:pphj9730@gmail.com">
+        <span class="label eng">Email</span>
+        <span class="value">pphj9730@gmail.com</span>
+        <span class="arrow eng">&#8594;</span>
+      </a>
+      <a class="contact-row" href="https://instagram.com/calmcloseup.studio" target="_blank" rel="noopener">
+        <span class="label eng">Instagram</span>
+        <span class="value">@calmcloseup.studio</span>
+        <span class="arrow eng">&#8594;</span>
+      </a>
+    </div>
+  </section>
 
-<div class="designer-credit reveal">
-  <div class="designer-name-en eng">JunYeong Park</div>
-  <div class="designer-name-kr">박준영</div>
+  <div class="designer-credit reveal">
+    <div class="designer-name-en eng">JunYeong Park</div>
+    <div class="designer-name-kr">박준영</div>
+  </div>
 </div>
 
 <footer>
