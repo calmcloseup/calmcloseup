@@ -663,6 +663,34 @@
     .scroll-cue{ position:static; transform:none; margin:50px auto 0; }
     .hero-desktop-only{ display:none; }
     .hero-mobile-only{ display:block; }
+    .work-grid{
+      perspective:none;
+      overflow-x:auto;
+      overflow-y:hidden;
+      -webkit-overflow-scrolling:touch;
+      scroll-snap-type:x proximity;
+      cursor:auto;
+    }
+    .carousel-ring{
+      position:static;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      padding:0 24px;
+      width:max-content;
+      height:auto;
+      transform:none !important;
+      transform-style:flat;
+    }
+    .work-item{
+      position:static;
+      margin:0;
+      transform:none !important;
+      opacity:1 !important;
+      scroll-snap-align:center;
+    }
+    .work-orbit{ display:none; }
+    .marquee-track{ animation-duration:20s; }
     .section-head{ padding-top:0; }
     @keyframes bulb-on-word{
       0%{ color:var(--dark); text-shadow:none; }
