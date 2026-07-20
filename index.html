@@ -495,8 +495,8 @@
     width:min(50vw, 280px);
     margin-left:calc(min(50vw, 280px) / -2);
     margin-top:calc(min(60vw, 420px) / -2 * 0.72);
-    transition:opacity .3s ease;
     backface-visibility:hidden;
+    will-change:transform, opacity;
     display:block;
     text-decoration:none;
     color:inherit;
@@ -516,11 +516,9 @@
   }
   .work-card{
     position:relative;
-    background:var(--glass-bg);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    backdrop-filter: blur(16px) saturate(180%);
+    background:rgba(255, 199, 20, 0.35);
     border:1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-shine);
+    box-shadow: 0 4px 14px rgba(140,100,0,0.12);
     aspect-ratio:4/3;
     overflow:hidden;
     display:flex;
