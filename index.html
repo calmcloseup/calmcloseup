@@ -1262,6 +1262,8 @@
     window.requestAnimationFrame(tick);
 
     // Drag to spin, like pushing a merry-go-round
+    var downX = 0, downY = 0, downTarget = null, moved = 0;
+
     function pointerDown(x){
       isDragging = true;
       lastX = x;
@@ -1275,19 +1277,50 @@
       var spin = delta * 0.4;
       rotation += spin;
       dragVelocity = spin;
+      moved += Math.abs(delta);
     }
     function pointerUp(){
       isDragging = false;
       scene.classList.remove('is-dragging');
     }
 
-    scene.addEventListener('mousedown', function(e){ pointerDown(e.pageX); });
+    scene.addEventListener('mousedown', function(e){
+      downTarget = e.target.closest('.work-item');
+      moved = 0;
+      pointerDown(e.pageX);
+    });
     window.addEventListener('mousemove', function(e){ pointerMove(e.pageX); });
-    window.addEventListener('mouseup', pointerUp);
+    window.addEventListener('mouseup', function(e){
+      pointerUp();
+      if(downTarget && moved < 6){
+        var href = downTarget.getAttribute('href');
+        var target = downTarget.getAttribute('target') || '_self';
+        if(href) window.open(href, target, 'noopener');
+      }
+      downTarget = null;
+    });
+    scene.addEventListener('click', function(e){
+      // Navigation is handled manually above (more reliable during continuous rotation);
+      // suppress the native link click so it never double-opens.
+      var link = e.target.closest('.work-item');
+      if(link) e.preventDefault();
+    });
 
-    scene.addEventListener('touchstart', function(e){ pointerDown(e.touches[0].pageX); }, {passive:true});
+    scene.addEventListener('touchstart', function(e){
+      downTarget = e.target.closest('.work-item');
+      moved = 0;
+      pointerDown(e.touches[0].pageX);
+    }, {passive:true});
     scene.addEventListener('touchmove', function(e){ pointerMove(e.touches[0].pageX); }, {passive:true});
-    scene.addEventListener('touchend', pointerUp);
+    scene.addEventListener('touchend', function(e){
+      pointerUp();
+      if(downTarget && moved < 6){
+        var href = downTarget.getAttribute('href');
+        var target = downTarget.getAttribute('target') || '_self';
+        if(href) window.open(href, target, 'noopener');
+      }
+      downTarget = null;
+    });
   })();
 
   // Scroll-linked headline & about-body scale
